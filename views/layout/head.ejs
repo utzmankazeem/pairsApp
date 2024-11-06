@@ -1,0 +1,61 @@
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Pairs | <%- title %></title>
+    <link rel="shortcut icon" href="../fav.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/modern-business.css">
+    <link rel="stylesheet" type="text/css" href="/css/blog-post.css">
+    <link rel="stylesheet" type="text/css" href="/css/simple-sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a href="/index" class="navbar-brand">
+                ✈️
+            </a>
+            <div class="Collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                     <% if (typeof isLogged !== "undefined" && isLogged ) {%>
+
+                        <li class="nav-item">
+                            <a href="/index" class="nav-link">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/about" class="nav-link">
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/contact" class="nav-link">
+                                Contact
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/logout" class="nav-link">
+                                Logout
+                            </a>
+                        </li>
+                        <%} else {%>
+                            <li class="nav-item">
+                                <a href="/" class="nav-link">
+                                    Login
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/signup" class="nav-link">
+                                    signup
+                                </a>
+                            </li>
+                            <%}%>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex main" id="wrapper">

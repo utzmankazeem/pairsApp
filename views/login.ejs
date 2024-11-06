@@ -1,0 +1,27 @@
+<% title="Login" %> <%- include("layout/head.ejs") %>
+<div class="container">
+  <div class="row my-4">
+    <div class="col-md-12">
+      <h2>Pairs Login</h2>
+      <% if(success !="undefined" ){%>
+      <p style="color: blue"><%= success %></p>
+      <%}%> <% if(er_msg !="undefined" ){%>
+      <p style="color: brown"><%= er_msg %></p>
+      <%}%>
+      <form action="/" method="post">
+        <div class="form--group">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" required
+          value="<%= typeof email != "undefined" ? email: "" %>">
+        </div>
+        <div class="form--group">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" required
+          value="<%= typeof password != "undefined" ? password : "" %>">
+        </div>
+        <input type="submit" class="btn btn-primary" value="login" />
+        <input type="reset" class="btn btn-primary" value="cancel" />
+      </form>
+    </div>
+  </div>
+<%- include("layout/foot.ejs") %>

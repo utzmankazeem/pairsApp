@@ -1,0 +1,65 @@
+<% title='Register' %>
+<%- include('layout/head.ejs')  %>
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-12">
+                <h2>Pairs Register</h2>
+            <% if (success != "undefined"){ %>
+                <p style="color: blue;"><%= success %></p>
+            <%}%>
+            <% if(er_msg != "undefined"){ %>
+                <p style="color: brown;"><%= er_msg %></p>
+            <%}%>
+            <form action="/signup" method="post">
+                <div class="form--group">
+                    <label for="">Firatname</label>
+                    <input type="text" name="fname" class="form-control" required 
+                    value="<% typeof fname != "undefined" ? fname : ' ' %>">
+                </div>
+                <div class="form--group">
+                    <label for="">Lastname</label>
+                    <input type="text" name="lname" class="form-control" required 
+                    value="<% typeof lname != "undefined" ? lname : ' ' %>">
+                </div>
+                <div class="form--group">
+                    <label for="">Gender: </label>
+                        Male<input type="radio" name="sex"  value="Male" required 
+                        &nbsp; <% if(typeof sex != "undefined" && sex == "Male"){%> checked<%}%>>
+                        Female<input type="radio" name="sex" value="Female" required 
+                        &nbsp; <% if(typeof sex != "undefined" && sex == "Female") {%> checked<%}%>>
+                    
+                </div>
+                <div class="form--group">
+                    <label for="">Email</label>
+                    <input type="text" name="email" class="form-control" required 
+                    value="<% typeof email != "undefined" ? email : "" %>">
+                </div>
+                <div class="form--group">
+                    <label for="">Mobile</label>
+                    <input type="text" name="mobile" class="form-control" required 
+                    value="<% typeof mobile != "undefined" ? mobile: "" %>">
+                </div>
+                <div class="form--group">
+                    <% let dest=["Lagos", "Kano", "Abia", "Adamawa", "Borno", "Delta", "Edo", "Kaduna", "Osun"] %>
+                    <label for="">Destination<select name="destination"></label>
+                        <option value="">Select destination</option>
+                    <% dest.map((state)=> {%> 
+                        <option value="<%-state%>"
+                            <% if(typeof dest != "undefined"){%> selected="selected" <%}%>> <%-state%>
+                        </option>
+                    <%}) %>
+                    </select>
+                </div>
+                <div class="form--group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control" required 
+                    value="<% typeof password != "undefined" ? password : "" %>">
+                </div>
+                <input type="submit" class="btn btn-primary" value="sign-up">
+                <input type="reset" class="btn btn-primary" value="cancel">
+            </form>
+        </div>
+    </div>
+</div>
+<%- include("layout/foot") %>

@@ -1,0 +1,44 @@
+table {
+    border: 1px solid rgba(0, 0, 0, 0.484);
+    margin: auto;
+    padding: auto;
+    font-size: 16px;
+    text-align: center;
+
+    & tr {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+    }
+        & tr:hover{
+            background-color: white;
+            cursor: pointer;
+            color: #343a40;
+        }
+        /* & tr>th:hover {
+            background-color: #343a40;
+        } */
+    & a {
+        text-decoration: none;
+        display: block;
+        background-color: darkblue;
+        align-content: center;
+        height: 40px;
+        width: 50;
+        color: white;
+    }
+        & a:hover {
+            color: blue;
+            background-color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+}
+
+
+.foot {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  bottom: 0px;
+}
