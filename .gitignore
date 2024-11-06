@@ -2,3 +2,7 @@ node-modules
 config
 roadmap.md
 .env
+public/css
+public/font-awesome
+public/vendor
+
