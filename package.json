@@ -10,7 +10,7 @@
     "dev": "nodemon app"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kazeem Usman",
   "license": "ISC",
   "engines": {
     "node": "18.17.1"
