@@ -7,7 +7,7 @@ const contactContent = "Welcome to Pairs Today call us on +234 9099 876 8765 or 
 export const getIndex = async (req, res) => {
   if (!req.session.u_id) {
     req.flash("er_msg", "please login to get access");
-    res.redirect("/");
+    return res.redirect("/");
   } 
   try {
       const Passengers = await Passenger.find({}).sort({
@@ -15,9 +15,9 @@ export const getIndex = async (req, res) => {
       });
       if (!Passengers) {
         req.flash("er_msg", "no one abord");
-        res.redirect("/signup");
+        return res.redirect("/signup");
       } else {
-        res.render("index", {
+        return res.render("index", {
           "isLogged": req.session.u_id ? true : false,
           u_id: req.session.u_id,
           u_email: req.session.u_email,
@@ -27,20 +27,19 @@ export const getIndex = async (req, res) => {
     }
     catch (error) {
       req.flash("er_msg", `error passengers not found`);
-      res.redirect("/");
+      return res.redirect("/");
     }
 };
 export const getEditPassenger = async (req, res) => {
-  const id = req.params.id;
+  const _id = req.params.id;
   if (!req.session.u_id) {
     req.flash("er_msg", "please login")
-    res.redirect("/");
+    return res.redirect("/");
   } 
   try {
-      const Passengers = await Passenger.findById({ _id: id });
-      res.render("edit", {
+      const Passengers = await Passenger.findById({ _id });
+      return res.render("edit", {
         "isLogged": req.session.u_id ? true : false,
-        // u_id: req.session.u_id,
         u_email: req.session.u_email,
         id: req.session,
         edit: Passengers,
@@ -48,41 +47,39 @@ export const getEditPassenger = async (req, res) => {
     }
     catch (err) {
       req.flash("er_msg", "please choose passengers")
-      res.redirect("/index");
-      throw(err)
+      return res.redirect("/index");
     }
 };
 export const postEditPassenger = async (req, res) => {
   const _id = req.params.id;
   if (!req.session.u_id) {
     req.flash("er_msg", "please login");
-    res.redirect("/");
+    return res.redirect("/");
   }
     try {
       const Passengers = await Passenger.findByIdAndUpdate({ _id }, req.body);
       if (Passengers) {
         req.flash("success", "passenger edited successful");
-        res.redirect("/index");
+        return res.redirect("/index");
       }
-      // if(Passengers instanceof Error) {
-      //   res.render("edit", {edit: Passengers}, Error)
-      // }
+      if(Passengers instanceof Error) {
+        res.render("edit", {edit: Passengers}, Error)
+      }
     } catch (er) {
-        req.flash("er_msg", "error passenger not edited");
-        res.redirect("/index");
-        throw(er)
+      req.flash("er_msg", "error passenger not edited");
+      return res.redirect("/index");
     }
 };
 
 export const aboutPage = (req, res) => {
-  res.render("about", {
+  return res.render("about", {
     "isLogged": req.session.u_id ? true : false, 
     u_id: req.session.u_id,
     u_email: req.session.u_email,
     about: aboutContent })
 }
 export const contactPage = (req, res) => {
-  res.render("contact", {
+  return res.render("contact", {
     "isLogged": req.session.u_id ? true : false, 
     u_id: req.session.u_id,
     u_email: req.session.u_email,
@@ -95,11 +92,11 @@ export const deletePassenger = async (req, res) => {
     const Passengers = await Passenger.findByIdAndRemove({ _id });
     if (Passengers) {
       req.flash("success", "passenger deleted");
-      res.redirect("/index");
+      return res.redirect("/index");
     }
   } catch (er) {
     req.flash("er_msg", "no data found");
-    res.redirect("/index");
+    return res.redirect("/index");
     throw(er)
   }
 };
