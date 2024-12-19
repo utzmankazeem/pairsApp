@@ -22,15 +22,15 @@ table {
     & a {
         text-decoration: none;
         display: block;
-        background-color: darkblue;
+        
         align-content: center;
         height: 40px;
         width: 50;
         color: white;
     }
         & a:hover {
-            color: blue;
-            background-color: white;
+            color: #fff;
+            background-color: #343a40;
             text-decoration: none;
             cursor: pointer;
         }
@@ -48,5 +48,5 @@ table {
 .foot {
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: 0px;
 }
