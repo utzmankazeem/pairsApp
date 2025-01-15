@@ -1,12 +1,8 @@
 body {
     overflow-y: auto;
 }
-table {
-    border: 1px solid rgba(0, 0, 0, 0.484);
-    margin: auto;
-    padding: auto;
-    font-size: 16px;
-    text-align: center;
+
+table{
 
     & tr {
         background-color: #343a40;
@@ -17,25 +13,29 @@ table {
             background-color: white;
             cursor: pointer;
             color: #343a40;
+
+            & a {
+                cursor: pointer;
+                color: #343a40;
+            }
+            & a:hover {
+                color: #fff;
+                background-color: #343a40;
+                text-decoration: none;
+                cursor: pointer;
+            }
         }
        
     & a {
         text-decoration: none;
+        border-radius: 10px;
         display: block;
-        
         align-content: center;
         height: 40px;
         width: 50;
         color: white;
     }
-        & a:hover {
-            color: #fff;
-            background-color: #343a40;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-    }
+}
     
 .active {
         background-color: #343a40;
@@ -49,4 +49,25 @@ table {
   position: fixed;
   width: 100%;
   bottom: 0px;
+}
+
+@media (max-width: 700px) {
+    table{
+        font-size: 12px;
+        box-sizing: border-box;
+        width: min-content;
+        
+        & a {
+            text-decoration: none;
+        }
+        & a:hover  {
+            cursor: pointer;
+        }
+        & button {
+            display: inline-block;
+            height: 5px;
+            width: 10px;
+            border: none;
+        }
+    }
 }

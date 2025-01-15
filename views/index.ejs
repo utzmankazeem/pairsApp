@@ -15,13 +15,18 @@
                             <th colspan="2">Detaila</th>
                         </tr>
                         <tr>
+                            <script>
+                                const datReg = '';
+                            </script>
                             <% onboard.map((passenger)=> {%>
                                 <td><%-passenger.fname +"-"+ passenger.lname %></td>
                                 <td><%-passenger.sex%></td>
                                 <td><%-passenger.email%></td>
                                 <td><%-passenger.mobile%></td>
                                 <td><%-passenger.destination %></td>
-                                <td><%-passenger.dateReg%></td>
+                                <td>
+                                    <%- new Date(passenger.dateReg).toLocaleString() %>
+                                </td>
                                 <td><a href="/edit/<%-passenger._id%>">Edit</a></td>
                                 <td><a href="/delete/<%-passenger._id%>">Delete</a></td>
                         </tr>
