@@ -63,11 +63,9 @@ export const postLogin = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  try {
-    await req.session.destroy();
-    return res.redirect("/");
-  } catch (error) {
-    req.flash("er_msg", "unknown error");
-    return res.redirect("/");
-  }
+  // Clear session data
+  req.session = null; 
+  // Explicitly delete the cookie
+  res.clearCookie('session'); 
+  return res.redirect("/");
 };

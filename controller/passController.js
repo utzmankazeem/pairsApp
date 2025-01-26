@@ -97,7 +97,6 @@ export const deletePassenger = async (req, res) => {
   } catch (er) {
     req.flash("er_msg", "no data found");
     return res.redirect("/index");
-    throw(er)
   }
 };
 
